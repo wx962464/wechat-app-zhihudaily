@@ -1,3 +1,5 @@
+@import "/wxParse/wxParse.wxss";
+
 .art-header{
     position: relative;
     width: 100%;
@@ -12,7 +14,7 @@
 
 .art-title{
     position: absolute;
-    bottom: 36px;
+    bottom: 30px;
     left: 8px;
     font-size: 16px;
 }
@@ -20,8 +22,9 @@
 .art-source {
     position: absolute;
     bottom: 8px;
-    font-size: 14px;
-    right: 8px;   
+    font-size: 10px;
+    right: 8px;
+    opacity: 0.6
 }
 
 .art-content{

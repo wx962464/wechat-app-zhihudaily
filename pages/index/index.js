@@ -10,15 +10,16 @@ Page({
     autoplay: true,
     interval: 3000,
     loading: false,
-    plain: false
+    plain: false,
+    loadingMore:false,
   },
   //事件处理函数
-  bindViewTap(e) {
+  bindViewTap: function(e) {
     wx.navigateTo({
       url: '../detail/detail?id=' + e.target.dataset.id
     })
   },
-  loadMore (e) {
+  loadMore: function (e) {
     if (this.data.list.length === 0) return
     var date = this.getNextDate()
     var that = this
@@ -28,7 +29,7 @@ Page({
       headers: {
         'Content-Type': 'application/json'
       },
-      success (res) {
+      success: function (res) {
          that.setData({
            loading: false,
            list: that.data.list.concat([{ header: utils.formatDate(date, '-') }]).concat(res.data.stories)
@@ -36,23 +37,32 @@ Page({
       }
     })
   },
-  getNextDate (){
-    const now = new Date()
+  getNextDate: function (){
+    var now = new Date()
     now.setDate(now.getDate() - this.index++)
     return now
   },
-  onLoad () {
-    let that = this
+  onLoad: function () {
+    var that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'http://news-at.zhihu.com/api/4/news/latest',
       headers: {
         'Content-Type': 'application/json'
       },
-      success (res) {
+      success: function (res) {
+        wx.hideLoading()
+        console.log(res.data)
          that.setData({
+           loadingMore: true,
            banner: res.data.top_stories,
            list: [{ header: '今日热闻' }].concat(res.data.stories)
          })
+      },
+      fail: function() {
+        wx.hideLoading()
       }
     })
     this.index = 1

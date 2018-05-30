@@ -59,6 +59,11 @@
   border-radius: 5px;
 }
 
+.news-item-left {
+  padding-left: 5px;
+  padding-right: 8px;
+}
+
 .news-item-right{
   width: 80px;
   height: 80px;
