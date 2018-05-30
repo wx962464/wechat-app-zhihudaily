@@ -32,7 +32,7 @@ Page({
       success: function (res) {
          that.setData({
            loading: false,
-           list: that.data.list.concat([{ header: utils.formatDate(date, '-') }]).concat(res.data.stories)
+           list: that.data.list.concat([{ header: utils.formatDateWithWeekDay(date) }]).concat(res.data.stories)
          })
       }
     })
