@@ -11,7 +11,6 @@ Page({
     interval: 3000,
     loading: false,
     plain: false,
-    loadingMore:false,
   },
   //事件处理函数
   bindViewTap: function(e) {
@@ -19,7 +18,7 @@ Page({
       url: '../detail/detail?id=' + e.target.dataset.id
     })
   },
-  loadMore: function (e) {
+  loadMore: function () {
     if (this.data.list.length === 0) return
     var date = this.getNextDate()
     var that = this
@@ -30,10 +29,14 @@ Page({
         'Content-Type': 'application/json'
       },
       success: function (res) {
-         that.setData({
+        wx.hideNavigationBarLoading()
+        that.setData({
            loading: false,
            list: that.data.list.concat([{ header: utils.formatDateWithWeekDay(date) }]).concat(res.data.stories)
          })
+      },
+      fail: function() {
+        wx.hideNavigationBarLoading()
       }
     })
   },
@@ -41,6 +44,11 @@ Page({
     var now = new Date()
     now.setDate(now.getDate() - this.index++)
     return now
+  },
+  onReachBottom: function() {
+     console.log('触发了底部的刷新，开始加载')
+     wx.showNavigationBarLoading()
+     this.loadMore();
   },
   onLoad: function () {
     var that = this
@@ -56,7 +64,6 @@ Page({
         wx.hideLoading()
         console.log(res.data)
          that.setData({
-           loadingMore: true,
            banner: res.data.top_stories,
            list: res.data.stories
           //  list: [{ header: '今日热闻' }].concat(res.data.stories)
