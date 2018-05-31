@@ -25,14 +25,14 @@
 }
 
 .sub-title{
-  color: #76787e;
-  height: 36px;
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  height: 40px;
   line-height: 36px;
-  padding: 0 16px;
   width: 100%;
-  font-size: 14px;
-  padding-left: 16px;
-  padding-right: 16px;
+  background-color: #00a2ea;
+  font-size: 16px;
 }
 
 .news-item-container {

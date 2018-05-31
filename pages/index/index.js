@@ -58,7 +58,8 @@ Page({
          that.setData({
            loadingMore: true,
            banner: res.data.top_stories,
-           list: [{ header: '今日热闻' }].concat(res.data.stories)
+           list: res.data.stories
+          //  list: [{ header: '今日热闻' }].concat(res.data.stories)
          })
       },
       fail: function() {
