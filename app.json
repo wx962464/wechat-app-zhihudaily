@@ -1,12 +1,12 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/theme/theme",
     "pages/detail/detail",
     "pages/list/list"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00a2ea",
     "navigationBarTitleText": "知乎日报",
     "navigationBarTextStyle": "white"
@@ -16,17 +16,20 @@
     "selectedColor": "#3cc51f",
     "borderStyle": "white",
     "backgroundColor": "#ffffff",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "iconPath": "images/icon_home_normal.png",
-      "selectedIconPath": "images/icon_home_pressed.png",
-      "text": "主页"
-    }, {
-      "pagePath": "pages/theme/theme",
-      "iconPath": "images/icon_theme_normal.png",
-      "selectedIconPath": "images/icon_theme_pressed.png",
-      "text": "主题日报"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon_home_normal.png",
+        "selectedIconPath": "images/icon_home_pressed.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/theme/theme",
+        "iconPath": "images/icon_theme_normal.png",
+        "selectedIconPath": "images/icon_theme_pressed.png",
+        "text": "主题日报"
+      }
+    ]
   },
   "networkTimeout": {
     "request": 120000,
